@@ -3,7 +3,7 @@
 use core::ptr::write_volatile;
 use crate::rp1::{
     IO_BANK0_BASE, PADS_BANK0_BASE, RIO_BASE,
-    RIO_OE_SET, RIO_OUT_CLR, memory_barrier,
+    RIO_OE_SET, RIO_OUT_CLR, RIO_OUT_SET, memory_barrier,
 };
 
 
@@ -44,6 +44,15 @@ pub fn set_as_output(pin: u32) {
 pub fn set_output_low(pin: u32) {
     unsafe {
         write_volatile((RIO_BASE + RIO_OUT_CLR) as *mut u32, 1 << pin);
+        memory_barrier();
+    }
+}
+
+/// Set GPIO High (On)
+pub fn set_output_high(pin: u32) {
+    unsafe {
+        write_volatile((RIO_BASE + RIO_OE_SET) as *mut u32, 1 << pin); // Ensure Output Enabled
+        write_volatile((RIO_BASE + RIO_OUT_SET) as *mut u32, 1 << pin);
         memory_barrier();
     }
 }

@@ -14,6 +14,7 @@ Currently, it serves as a robust hardware abstraction layer verifying RP1 (South
 | :--- | :--- | :--- |
 | **GPIO 14** | UART0 TX | Serial Console Transmit (Connected to Adapter RX) |
 | **GPIO 15** | UART0 RX | Serial Console Receive (Connected to Adapter TX) |
+| **GPIO 18** | SERVO PWM | 9g Servo Motor Control (50Hz Software PWM) |
 | **GPIO 6** | `ALIVE_LED` | Alive Status Indicator (Blinks during normal operation) |
 | **GPIO 5** | `ERROR_LED` | Panic/Error Indicator (Blinked by Panic Handler) |
 | **ACT LED** | Onboard | Activity LED (Green) - Used for Boot/Panic status |
@@ -71,7 +72,7 @@ The ultimate goal of BatMetal is **Autonomous Sonar Mapping**.
 Future implementations will include:
 
 *   [ ] **HC-SR04 Driver:** Precise microsecond timing for ultrasonic triggering and echo measurement.
-*   [ ] **Servo Control:** PWM generation to sweep the sonar sensor (Radar style).
+*   [x] **Servo Control:** PWM generation to sweep the sonar sensor (Radar style).
 *   [ ] **Point Cloud Storage:** In-memory mapping of detected obstacles.
 *   [ ] **Visualization:** Exporting polar coordinate data via UART for external rendering.
 
