@@ -2,7 +2,9 @@ ENTRY(_start)
 
 SECTIONS
 {
-    . = 0x200000; 
+    /* The firmware relocates kernels without a Linux image header to
+       0x80000, so link there (matches kernel_address in config.txt) */
+    . = 0x80000;
 
     .text : {
         KEEP(*(.text.boot))

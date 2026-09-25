@@ -1,8 +1,9 @@
 # Enable 64-bit kernel
 arm_64bit=1
 
-# Kernel filename
+# Kernel filename and load address (must match link.ld)
 kernel=kernel8.img
+kernel_address=0x80000
 
 # Enable UART (Defaults to Debug UART on JST for Pi 5)
 enable_uart=1
